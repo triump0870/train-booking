@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Train Booking Details</h1>
+<hr>
+    <label>PNR: </label> {{booking.pnr}}<br>
+    <label>Source:</label> {{booking.from_station}}<br>
+    <label>Destination:</label> {{booking.to_station}}<br>
+    <label>Train no: </label>{{booking.train.id}}<br>
+    <label>Train name: </label>{{booking.train.name}}<br>
+    <label>Date: </label>{{booking.date_of_journey|date:'Y-m-d H:i'}}<br>
+    <label>Total Seats: </label>{{booking.number_of_seats}}<br>
+<hr>
+{% endblock content %}

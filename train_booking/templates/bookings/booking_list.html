@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Train Bookings</h1>
+{% for booking in object_list %}
+    <label>PNR: </label> {{booking.pnr}}<br>
+    <label>Source:</label> {{booking.from_station}}<br>
+    <label>Destination:</label> {{booking.to_station}}<br>
+    <label>Train no: </label>{{booking.train.id}}<br>
+    <label>Train name: </label>{{booking.train.name}}<br>
+    <label>Date: </label>{{booking.date_of_journey}}<br>
+    <label>Total Seats: </label>{{booking.number_of_seats}}<br>
+<hr>
+{% endfor %}
+{% endblock content %}

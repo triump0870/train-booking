@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Search Result</h1>
+
+{% if data %}
+    {% for item in data %}
+        {% for key, value in item.items %}
+            {{ key }}:{{value}}
+            <br>
+        {% endfor %}
+        <hr>
+    {% endfor %}
+{% else %}
+    <h3>No route present</h3>
+{% endif %}
+{% endblock content %}
