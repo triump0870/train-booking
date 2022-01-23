@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Train(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     total_seats = models.PositiveIntegerField()
 
     def __str__(self):
@@ -12,7 +12,7 @@ class Train(models.Model):
 
 
 class Station(models.Model):
-    name = models.CharField(max_length=50, db_index=True)
+    name = models.CharField(max_length=50, db_index=True, unique=True)
 
     def __str__(self):
         return self.name
@@ -26,6 +26,12 @@ class Route(models.Model):
     departure_time = models.DateTimeField()
     stop_no = models.PositiveIntegerField()
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['train', 'source', 'destination', 'arrival_time'],
+                                    name="unique_route_train")
+        ]
+
     def __str__(self):
         return f"{self.train_id}-{self.source}-{self.destination}-{self.stop_no}"
 
@@ -35,6 +41,11 @@ class Availability(models.Model):
     station = models.ForeignKey(Station, on_delete=models.CASCADE, db_index=True)
     date = models.DateField()
     available_seats = models.PositiveIntegerField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['train', 'station', 'date'], name="unique_availability",)
+        ]
 
     def __str__(self):
         return f"{self.train_id}-{self.station}-{self.available_seats}"
