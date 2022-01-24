@@ -3,13 +3,23 @@
 {% block content %}
 <h1>Search Result</h1>
 
-{% if data %}
-    {% for item in data %}
+{% if preferred %}
+    <h1>Matched trains with required seats</h1>
+    {% for item in preferred %}
         {% for key, value in item.items %}
             {{ key }}:{{value}}
             <br>
         {% endfor %}
         <hr>
+    {% endfor %}
+{% elif non_preferred %}
+<h1>Available seats are less than required seats</h1>
+    {% for item in non_preferred %}
+        {% for key, value in item.items %}
+            {{ key }}:{{value}}
+            <br>
+        {% endfor %}
+    <hr>
     {% endfor %}
 {% else %}
     <h3>No route present</h3>
