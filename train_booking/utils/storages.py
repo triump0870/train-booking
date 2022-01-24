@@ -1,11 +1,23 @@
-from storages.backends.gcloud import GoogleCloudStorage
+# from storages.backends.gcloud import GoogleCloudStorage
+#
+#
+# class StaticRootGoogleCloudStorage(GoogleCloudStorage):
+#     location = "static"
+#     default_acl = "publicRead"
+#
+#
+# class MediaRootGoogleCloudStorage(GoogleCloudStorage):
+#     location = "media"
+#     file_overwrite = False
+
+from storages.backends.s3boto3 import S3Boto3Storage
 
 
-class StaticRootGoogleCloudStorage(GoogleCloudStorage):
+class StaticRootS3Boto3Storage(S3Boto3Storage):
     location = "static"
-    default_acl = "publicRead"
+    default_acl = "public-read"
 
 
-class MediaRootGoogleCloudStorage(GoogleCloudStorage):
+class MediaRootS3Boto3Storage(S3Boto3Storage):
     location = "media"
     file_overwrite = False
