@@ -42,7 +42,5 @@ def update_chart_after_train_booking(sender, instance, created, **kwargs):
 def update_stop(sender, instance, **kwargs):
     if not instance.pk:
         route = Route.objects.filter(train=instance.train, destination=instance.source).first()
-        if not route:
-            instance.stop_no = 0
-        else:
+        if route:
             instance.stop_no = route.stop_no + 1
