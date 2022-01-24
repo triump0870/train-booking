@@ -24,7 +24,7 @@ class Route(models.Model):
     destination = models.ForeignKey(Station, on_delete=models.CASCADE, db_index=True, related_name="destination")
     arrival_time = models.DateTimeField()
     departure_time = models.DateTimeField()
-    stop_no = models.PositiveIntegerField()
+    stop_no = models.PositiveIntegerField(blank=True, default=0, )
 
     class Meta:
         constraints = [
