@@ -15,7 +15,6 @@ Want to book 5 seat from C->E: 4 seats T1-D1 should not come in the results
 
 1. id
 2. DB
-3.
 
 
 Trains = 50000
