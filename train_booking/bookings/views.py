@@ -77,6 +77,7 @@ class RouteListView(ListView):
                 train_routes[route.train.name]["route"] += f"->{route.destination}"
             except KeyError:
                 train_routes[route.train.name] = {"route": f"{route.source}->{route.destination}",
-                                                  "capacity": route.train.total_seats}
+                                                  "capacity": route.train.total_seats,
+                                                  "date": route.train_charting_date}
         context["train_routes"] = train_routes
         return context

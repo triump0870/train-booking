@@ -4,7 +4,7 @@
 {% for train,details in train_routes.items %}
     <label>Train name: </label>{{train}}<br>
     {% for key,value in details.items %}
-    <label>Train {{key}}: </label>{{value}}<br>
+    <label>{{key}}: </label>{{value}}<br>
     {% endfor %}
 <hr>
 {% endfor %}
